@@ -1,0 +1,23 @@
+{
+  "name": "api_test",
+  "version": "0.0.1",
+  "description": "API Test for Adventure project",
+  "scripts": {
+    "test": "grunt",
+    "test:unit": "mocha test/*.js --reporter mochawesome"
+  },
+  "dependencies": {
+    "supertest": "^3.0.0",
+    "mocha": "^4.0.1",
+    "chai": "^4.1.2",
+    "grunt": "^1.0.1",
+    "grunt-mocha-test": "^0.13.3",
+    "mochawesome": "^2.3.1"
+
+  },
+  "devDependencies": {
+    "grunt-mocha-test": "^0.13.3"
+  },
+  "author": "July xyShi",
+  "license": "ISC"
+}

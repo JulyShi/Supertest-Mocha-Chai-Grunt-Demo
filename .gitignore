@@ -1,0 +1,10 @@
+.idea/
+.DS_Store
+node_modules/*
+npm-debug.log*
+coverage/
+API-Test.iml
+test-report.html
+mochawesome-report/
+node_modules/
+
