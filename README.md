@@ -1,12 +1,12 @@
 # Adventure API Test with Supertest
 
-这是Adventure项目的API自动化测试框架 - supertest + mocha + Chai + grunt。作者：July xyShi
+这是一个API自动化测试框架 - supertest + mocha + Chai + grunt。作者：七姑娘 （Project中的测试脚本仅供参考，因此隐藏了真实信息，执行会失败。）
 
 ## Preparation
 1. 安装Node.js - `$ brew install nodejs`
 2. 安装grunt - `$ npm install grunt`
 3. 安装`Postman` (Chrome APP) 
- * 说明：Project中Postman目录下的文件是Test目录中的Script所对应Postman测试用例，你可以Download下来，import到自己的Postman里使用。
+ * 说明：Project中Postman目录下的文件是Postman测试用例，你可以Download下来，import到自己的Postman里使用。
 
 
 ## Getting Started
@@ -14,7 +14,7 @@
 
 2. 运行测试 
  * 运行全部测试脚本 - `$ grunt`、`$ grunt mochaTest`、`$ mocha test/*.js --reporter mochawesome`、
- * 运行单独的测试脚本, 如运行schedule_e2e.js - `$ mocha test/schedule_e2e.js --reporter mochawesome,如图：
+ * 运行单独的测试脚本, 如运行schedule_e2e.js - `$ mocha test/example.js --reporter mochawesome,如图：
   ![report](./doc/runtest.png)
 
 
@@ -176,12 +176,10 @@ describe('Description of feature',function() {
 module.exports = {
     host : {
         local: '',
-        QA_CampaignService: 'https://106.15.62.84:8004',
-        UAT_CampaignService: 'http://106.15.61.164:8004',
-        QA_DatService: 'https://106.15.62.84:8007',
-        UAT_DataService: 'http://106.15.61.164:8007'
+        QA: 'https://192.168.1.1:8004',
+        UAT: 'https://192.168.1.0:8004'
     },
-    env: process.env.NODE_ENV || 'QA_CampaignService'
+    env: process.env.NODE_ENV || 'QA'
 };
 ```
 然后在脚本文件开始引入env_config.js文件，就可以在指定的环境下运行该测试脚本了。
@@ -239,12 +237,6 @@ it('Then get booking details', function (done) {
             expect(res.body.id).to.equal(scheduleId);
             expect(res.body.client).to.equal(client);
             expect(res.body.brand).to.equal(brand);
-            expect(res.body.targetingPV).to.equal('10');
-            expect(res.body.status).to.equal('BOOKING');
-            expect(res.body.campaignId).to.equal(null);
-            expect(res.body.sentToCampaign).to.equal(false);
-            expect(res.body.start).to.equal(startTimeHQ);
-            expect(res.body.end).to.equal(endTimePD);
          }).end(function (err) {
          if(err){
             return done(err);
@@ -267,12 +259,6 @@ it('When update booking', function (done) {
         .send(update_scheduleRequestBody)
         .expect(200，function (res) {
             expect(res.body.id).to.equal(scheduleId);
-            expect(res.body.targetingPV).to.equal('20');
-            expect(res.body.status).to.equal('BOOKING');
-            expect(res.body.campaignId).to.equal(null);
-            expect(res.body.sentToCampaign).to.equal(false);
-            expect(res.body.start).to.equal(startTimeHQ);
-            expect(res.body.end).to.equal(endTimeHQ);
          }).end(function (err) {
          if(err){
             return done(err);
@@ -290,8 +276,6 @@ it('When I delete an AP', function (done) {
 });
 ```
 
----
-未完待续
 
 
 
